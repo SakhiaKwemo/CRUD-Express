@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dragon Website</title>
+</head>
+<body>
+    Welcome To The Dragon Website
+    <form method="GET" action="/dragon/add">
+        <input type="submit" value="Add New Dragon">
+    </form>
+    <% for (const dragon in dragonList) {%>
+        <ul>
+            <li> 
+                    <img src="<%=dragonList[dragon].pic%>" style="width: 100px">
+                    My name is
+                    <%= dragonList[dragon].name%>
+                    I am a Dragon from the 
+                    <%= dragonList[dragon].region%>
+                    region. 
+                    And I am the color
+                    <%= dragonList[dragon].color%>                
+                <form method="GET" action="/dragon/edit/<%=dragon%>">
+                    <input type="submit" value="Edit Dragon">
+                </form>
+                <form method="POST" action="/dragon/delete/<%=dragon%>">
+                    <input type="submit" value="Delete Dragon">
+                </form>
+            </li>
+        </ul>
+    <% }%>
+</body>
+</html>
